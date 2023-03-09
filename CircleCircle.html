@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      canvas {
+        background: #eee;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="1000" height="1000"></canvas>
+
+    <script>
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let x = canvas.width / 2;
+    let y = (canvas.height / 4);
+
+    let dx = 25;
+    let dy = 0;
+
+    let height = 200 * Math.cos(Math.PI / 6);
+
+    function drawCircle1() {
+      ctx.beginPath();
+      ctx.arc(x, y, 10, 0, 2 * Math.PI, false);
+      ctx.lineWidth = 3;
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawCircle2() {
+      ctx.beginPath();
+      ctx.arc(x, 1000-y, 10, 0, 2 * Math.PI, false);
+      ctx.lineWidth = 3;
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawCircle3() {
+      ctx.beginPath();
+      ctx.arc(1000-x, y, 10, 0, 2 * Math.PI, false);
+      ctx.lineWidth = 3;
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawCircle4() {
+      ctx.beginPath();
+      ctx.arc(1000-x, 1000-y, 10, 0, 2 * Math.PI, false);
+      ctx.lineWidth = 3;
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawCircle1();
+      drawCircle2();
+      drawCircle3();
+      drawCircle4();
+      x += dx;
+      y += dy;
+      ddx = (500-x)/100;
+      ddy = (500-y)/100;
+      dx += ddx;
+      dy += ddy;
+    }
+
+
+
+
+
+    setInterval(draw, 100);
+
+
+    </script>
+  </body>
+</html>
