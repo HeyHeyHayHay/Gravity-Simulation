@@ -23,7 +23,7 @@
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
 
-    const g = 10000;
+    const g = 1000;
 
     let xS = canvas.width / 2;
     let yS = (canvas.height / 2);
@@ -33,7 +33,7 @@
     let yM = (canvas.height / 5);
     const moonMass = 1;
 
-    let vxM = 100;
+    let vxM = 20;
     let vxS = 0;
     let vyM = 0;
     let vyS = 0;
@@ -64,7 +64,7 @@
 
     function gravityAcceleration(Mx,My,Sx,Sy,moon,xcoord) {
 
-      const rSquared = ((Mx-Sx)**2+(My-Sy)**2);
+      const rSquared = (Math.pow((Mx-Sx),2)+Math.pow((My-Sy),2));
 
       if (moon) {
 
