@@ -5,7 +5,7 @@ const ctx = canvas.getContext("2d");
 const g = 1000;
 const allInstances = [];
 
-class celestialObject {
+class CelestialObject {
   mass: number;
   radius: number;
   color: string;
@@ -30,7 +30,7 @@ class celestialObject {
     allInstances.push(this);
   };
 
-  changeAccelerationDueTo(otherCelestialObject: celestialObject) {
+  changeAccelerationDueTo(otherCelestialObject: CelestialObject) {
 
     if (otherCelestialObject == this){
       return;
@@ -64,9 +64,7 @@ class celestialObject {
   changeAccelerationDueToAll(){
     this.xAcceleration = 0;
     this.yAcceleration = 0;
-    for (var i = 0; i < allInstances.length; i++){
-      this.changeAccelerationDueTo(allInstances[i]);
-    };
+    for (var object of allInstance) this.changeAccelerationDueTo(object);
   };
 
   updateValues(){
@@ -91,10 +89,9 @@ class celestialObject {
 
 //create CelestialObjects
 
-const sun = new celestialObject(100,75,'#f1c232',canvas.width / 2, canvas.height / 2,0,0,0,0);
-const earth = new celestialObject(2,15,'#c9c9c9',canvas.width / 2, canvas.height / 4,20,0,0,0);
-const mars = new celestialObject(1,10,'#b85416',canvas.width / 2, canvas.height - (canvas.height / 5),-20,0,0,0);
-const mars = new celestialObject(4,25,'#428bff',canvas.width / 9, canvas.height / 2,0,-10,0,0);
+const sun = new CelestialObject(100,75,'#f1c232',canvas.width / 2, canvas.height / 2,0,0,0,0);
+const earth = new CelestialObject(2,15,'#c9c9c9',canvas.width / 2, canvas.height / 4,20,0,0,0);
+const mars = new CelestialObject(1,10,'#b85416',canvas.width / 2, canvas.height - (canvas.height / 5),-20,0,0,0);
 
 
 
@@ -103,15 +100,9 @@ const mars = new celestialObject(4,25,'#428bff',canvas.width / 9, canvas.height 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (var i = 0; i < allInstances.length; i++){
-    allInstances[i].draw();
-  };
-  for (var i = 0; i < allInstances.length; i++){
-    allInstances[i].changeAccelerationDueToAll();
-  };
-  for (var i = 0; i < allInstances.length; i++){
-    allInstances[i].updateValues();
-  };
+  for (var object of allInstances) object.draw();
+  for (var object of allInstances) object.changeAccelerationDueToAll();
+  for (var object of allInstances) object.updateValues();
 };
 
 setInterval(animate, 100);
