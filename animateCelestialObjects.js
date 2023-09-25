@@ -46,8 +46,8 @@ var CelestialObject = /** @class */ (function () {
     CelestialObject.prototype.changeAccelerationDueToAll = function () {
         this.xAcceleration = 0;
         this.yAcceleration = 0;
-        for (var _i = 0, allInstance_1 = allInstance; _i < allInstance_1.length; _i++) {
-            var object = allInstance_1[_i];
+        for (var _i = 0, allInstances_1 = allInstances; _i < allInstances_1.length; _i++) {
+            var object = allInstances_1[_i];
             this.changeAccelerationDueTo(object);
         }
     };
@@ -80,16 +80,16 @@ var mars = new CelestialObject(1, 10, '#b85416', canvas.width / 2, canvas.height
 // animation function
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (var _i = 0, allInstances_1 = allInstances; _i < allInstances_1.length; _i++) {
-        var object = allInstances_1[_i];
+    for (var _i = 0, allInstances_2 = allInstances; _i < allInstances_2.length; _i++) {
+        var object = allInstances_2[_i];
         object.draw();
     }
-    for (var _a = 0, allInstances_2 = allInstances; _a < allInstances_2.length; _a++) {
-        var object = allInstances_2[_a];
+    for (var _a = 0, allInstances_3 = allInstances; _a < allInstances_3.length; _a++) {
+        var object = allInstances_3[_a];
         object.changeAccelerationDueToAll();
     }
-    for (var _b = 0, allInstances_3 = allInstances; _b < allInstances_3.length; _b++) {
-        var object = allInstances_3[_b];
+    for (var _b = 0, allInstances_4 = allInstances; _b < allInstances_4.length; _b++) {
+        var object = allInstances_4[_b];
         object.updateValues();
     }
 }

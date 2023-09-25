@@ -64,7 +64,7 @@ class CelestialObject {
   changeAccelerationDueToAll(){
     this.xAcceleration = 0;
     this.yAcceleration = 0;
-    for (var object of allInstance) this.changeAccelerationDueTo(object);
+    for (var object of allInstances) this.changeAccelerationDueTo(object);
   };
 
   updateValues(){
